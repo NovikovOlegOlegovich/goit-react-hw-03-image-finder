@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Overlay, ModalImg } from './Modal.styled';
 
 class Modal extends Component {
@@ -34,4 +35,10 @@ class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  handleAuthModal: PropTypes.func.isRequired,
+  currentImg: PropTypes.string.isRequired,
+};
+
 export default Modal;

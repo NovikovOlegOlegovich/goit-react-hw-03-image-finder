@@ -4,6 +4,8 @@ import { IMGGallery } from './ImageGallery.styled';
 import ImageGalleryItem from '../ImageGalleryItem';
 import Modal from '../Modal';
 import Button from '../Button';
+import Loader from '../Loader';
+import Skeleton from '../Skeleton';
 import { getIMG } from '../../API';
 
 const STATUS = {
@@ -94,7 +96,7 @@ class ImageGallery extends Component {
     const showLoadMoreButton = images.length !== 0 && currentPage < totalPage;
 
     if (status === STATUS.PENDING) {
-      return <p>Loading..</p>;
+      return <Loader></Loader>;
     }
 
     if (status === STATUS.RESOLVED) {
@@ -110,7 +112,9 @@ class ImageGallery extends Component {
               />
             ))}
           </IMGGallery>
-          {showLoadMoreButton && <Button handleClick={this.handleLoadMore} />}
+          {showLoadMoreButton && (
+            <Button handleClick={this.handleLoadMore}>Load More</Button>
+          )}
           {this.state.modalIsVisible && (
             <Modal
               handleAuthModal={this.handleAuthModal}
@@ -122,7 +126,7 @@ class ImageGallery extends Component {
     }
 
     if (status === STATUS.REJECTED) {
-      return <p>Error</p>;
+      return <Skeleton />;
     }
   }
 }
