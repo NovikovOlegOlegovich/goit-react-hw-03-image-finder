@@ -7,6 +7,7 @@ import {
   SearchField,
   SearchFormButtonLabel,
   SearchFormButton,
+  Icon,
 } from './Searchbar.styled';
 
 const initialValue = {
@@ -24,6 +25,7 @@ const Searchbar = ({ onSubmit }) => {
       <SearchbarBox>
         <SearchForm>
           <SearchFormButton type="submit">
+            <Icon />
             <SearchFormButtonLabel>Search</SearchFormButtonLabel>
           </SearchFormButton>
           <SearchField

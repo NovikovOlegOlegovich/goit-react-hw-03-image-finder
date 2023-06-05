@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { FiSearch } from 'react-icons/fi';
 import { Form, Field } from 'formik';
 
 export const SearchbarBox = styled.header`
@@ -59,11 +60,6 @@ export const SearchFormButtonLabel = styled.label`
 `;
 
 export const SearchFormButton = styled.button`
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
-  background-size: 40%;
-  background-repeat: no-repeat;
-  background-position: center;
-
   display: inline-block;
   border: 0;
   opacity: 0.6;
@@ -78,3 +74,5 @@ export const SearchFormButton = styled.button`
     opacity: 1;
   }
 `;
+
+export const Icon = styled(FiSearch)``;
