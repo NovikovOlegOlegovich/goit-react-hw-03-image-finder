@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { IMGGallery } from './ImageGallery.styled';
 import ImageGalleryItem from '../ImageGalleryItem';
@@ -15,6 +16,8 @@ const STATUS = {
   RESOLVED: 'resolved',
   REJECTED: 'rejected',
 };
+
+const modalRoot = document.querySelector('#modal-root');
 
 class ImageGallery extends Component {
   state = {
@@ -115,12 +118,14 @@ class ImageGallery extends Component {
           {showLoadMoreButton && (
             <Button handleClick={this.handleLoadMore}>Load More</Button>
           )}
-          {this.state.modalIsVisible && (
-            <Modal
-              handleAuthModal={this.handleAuthModal}
-              currentImg={currentImg}
-            />
-          )}
+          {this.state.modalIsVisible &&
+            createPortal(
+              <Modal
+                handleAuthModal={this.handleAuthModal}
+                currentImg={currentImg}
+              />,
+              modalRoot
+            )}
         </>
       );
     }
