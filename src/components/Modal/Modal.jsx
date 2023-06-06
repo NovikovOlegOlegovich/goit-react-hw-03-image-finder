@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { Overlay, ModalImg } from './Modal.styled';
 
@@ -15,29 +16,32 @@ class Modal extends Component {
 
   closeOnEsc = e => {
     if (e.code === 'Escape') {
-      this.props.handleAuthModal();
+      this.props.handleModal();
     }
   };
 
   handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      this.props.handleAuthModal();
+      this.props.handleModal();
     }
   };
 
+  modalRoot = document.querySelector('#modal-root');
+
   render() {
-    return (
+    return createPortal(
       <Overlay onClick={this.handleBackdropClick}>
         <ModalImg>
           <img src={this.props.currentImg} alt="" />
         </ModalImg>
-      </Overlay>
+      </Overlay>,
+      this.modalRoot
     );
   }
 }
 
 Modal.propTypes = {
-  handleAuthModal: PropTypes.func.isRequired,
+  handleModal: PropTypes.func.isRequired,
   currentImg: PropTypes.string.isRequired,
 };
 

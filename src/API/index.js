@@ -14,5 +14,8 @@ export const getIMG = async (searchQuery, page) => {
   if (!response.ok) {
     throw new Error('Ops .... ');
   }
+
+  console.log('hi');
+
   return response.json();
 };

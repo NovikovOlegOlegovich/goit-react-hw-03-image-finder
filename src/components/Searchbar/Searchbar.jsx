@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-// import { TfiSearch } from 'react-icons/tfi';
 import {
   SearchbarBox,
   SearchForm,
@@ -14,9 +13,9 @@ const initialValue = {
   searchWord: '',
 };
 
-const Searchbar = ({ onSubmit }) => {
+const Searchbar = ({ onSubmitForm }) => {
   const handleSubmit = ({ searchWord }, { resetForm }) => {
-    onSubmit(searchWord);
+    onSubmitForm(searchWord);
     resetForm();
   };
 
@@ -42,7 +41,7 @@ const Searchbar = ({ onSubmit }) => {
 };
 
 Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
 };
 
 export default Searchbar;
