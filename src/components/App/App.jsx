@@ -38,9 +38,6 @@ export class App extends Component {
   }
 
   async fetchIMG() {
-    this.setState({
-      status: STATUS.PENDING,
-    });
     try {
       const images = await getIMG(
         this.state.searchWord,
@@ -64,11 +61,18 @@ export class App extends Component {
   }
 
   onSubmitForm = searchWord => {
-    this.setState({ searchWord, currentPage: 1, images: [] });
+    this.setState({
+      searchWord,
+      currentPage: 1,
+      images: [],
+      status: STATUS.PENDING,
+    });
   };
 
   handleModal = () => {
-    this.setState({ modalIsVisible: !this.state.modalIsVisible });
+    this.setState(prevState => ({
+      modalIsVisible: !prevState.modalIsVisible,
+    }));
   };
 
   handlSetCurrentImg = img => {

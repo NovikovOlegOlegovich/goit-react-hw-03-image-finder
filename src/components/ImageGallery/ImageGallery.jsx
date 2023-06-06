@@ -21,7 +21,7 @@ const ImageGallery = ({ status, images, handlSetCurrentImg }) => {
 ImageGallery.propTypes = {
   status: PropTypes.string.isRequired,
   handlSetCurrentImg: PropTypes.func.isRequired,
-  images: PropTypes.object.isRequired,
+  images: PropTypes.array.isRequired,
 };
 
 export default ImageGallery;

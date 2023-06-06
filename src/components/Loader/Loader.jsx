@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Spiner, Circle } from './Loader.styled';
 
 const Loader = ({ status }) => {
@@ -9,4 +10,9 @@ const Loader = ({ status }) => {
     );
   }
 };
+
+Loader.propTypes = {
+  status: PropTypes.string.isRequired,
+};
+
 export default Loader;
